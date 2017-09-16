@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="description" content="Lowe's Assessment">
+      <title>[JOSHUA ABU] - Interview Test</title>
+      <link rel='stylesheet' href='/css/reset.css' />
+      <link rel='stylesheet' href='/css/index.css' />
+
+
+   </head>
+   <body>
+     <% productList.forEach((product) => { %>
+       <h2><%= (product.pricing.price.selling) ? product.pricing.price.selling : 10.00 %></h2>
+     <% }) %>
+
+
+
+
+
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   </body>
+</html>
