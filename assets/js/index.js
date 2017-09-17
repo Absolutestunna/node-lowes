@@ -1,4 +1,6 @@
 
+// "use strict"
+
 
 $( ".product-item" ).on('mouseover', function(e){
   e.preventDefault();
@@ -7,10 +9,10 @@ $( ".product-item" ).on('mouseover', function(e){
 
   $.get( `http://localhost:1337/product/${ productID }`, ( resp ) => {
 
-    const { productId, marketingBullets, description, imageUrls: { md }, brand, pricing: { price: { selling } }  } = resp;
+    const { productId, marketingBullets, description, imageUrls: { xl }, brand, pricing: { price: { selling } }  } = resp;
 
     $(' .product-description h3').html(description);     //update the product description;
-    $(' .selected-product img ').attr('src', md);        //update the image attribute
+    $(' .selected-product img ').attr('src', xl);        //update the image attribute
     $(' .selected-product img ').attr('alt', brand);     //update the alt attribute
     $(' .selected-product').data({"productprice": selling, "productdescription": description});  //update items for alert message
 
@@ -31,15 +33,16 @@ $( "#cart" ).on('click', (e) => {
   e.preventDefault();
   const selectedProduct = $('#sel-product');
 
-  const price = priceFormatter("productprice"));
+  const price = priceFormatter(selectedProduct.data("productprice"));
   const description = selectedProduct.data("productdescription");
 
-  alert(`Product: ${ description } \n
+  alert(`
+    Product: ${ description } \n
     Price: $${ price }
     `)
 })
 
 
-const priceFormatter(number) => {
+const priceFormatter = (number) => {
   return parseInt(number).toLocaleString();
 }

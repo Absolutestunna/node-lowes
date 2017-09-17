@@ -6,7 +6,7 @@
       <title>[JOSHUA ABU] - Interview Test</title>
       <link rel='stylesheet' href='/css/reset.css' />
       <link rel='stylesheet' href='/css/index.css' />
-
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
 
    </head>
    <body>
@@ -18,7 +18,7 @@
        data-productID="<%=productList[0].productId%>"
       >
        <div class="product-image">
-         <img src="<%= productList[0].imageUrls.md %>" alt="<%= productList[0].brand %>">
+         <img src="<%= productList[0].imageUrls.xl %>" alt="<%= productList[0].brand %>">
        </div>
        <div class="product-description">
 
@@ -27,7 +27,7 @@
           <ul>
 
               <% productList[0].marketingBullets.forEach((point) => { %>
-                  <li><%=  point  %></li>
+                  <li><p><%=  point  %></p></li>
               <% }) %>
 
           </ul>
@@ -45,16 +45,23 @@
 
       <% productList.forEach((product) => { %>
         <div class='product-item' data-productid="<%= product.productId %>">
-          <img src="<%= product.imageUrls.sm %>" alt="<%= product.brand %>">
-          <div class="product-thumb-description">
-            <p>
-              <%=  product.description %>
-            </p>
+          <div class="product-thumb-image">
+            <img src="<%= product.imageUrls.lg %>" alt="<%= product.brand %>">
+
           </div>
-          <div class="product-thumb-price">
-            <p>&#36;<%= parseInt(product.pricing.price.selling).toLocaleString() %></p>
+          <div class="">
+            <div class="product-thumb-description">
+              <p>
+                <%=  product.description %>
+              </p>
+            </div>
+            <div class="product-thumb-price">
+              <p>&#36;<%= parseInt(product.pricing.price.selling).toLocaleString() %></p>
+            </div>
+            <button type="button" name="view-more-button" class="view-more-button">VIEW MORE</button>
+
           </div>
-          <button type="button" name="view-more-button" class="view-more-button">VIEW MORE</button>
+
         </div>
       <% }) %>
 
