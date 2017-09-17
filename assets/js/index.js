@@ -1,35 +1,45 @@
-$( ".product-item" ).on('click', function(e, a){   //use mouseover event
-  e.preventDefault();
-  var productID = $( this ).data( 'productid' );
 
-  $.get( "http://localhost:1337/product/" + productID, ( resp ) => {
-    // $( ".result" ).html( data );
-    // alert( "Load was performed." );
-    console.log('resp', resp);
+
+$( ".product-item" ).on('mouseover', function(e){
+  e.preventDefault();
+
+  let productID = $( this ).data( 'productid' );        //product id of the hovered product.
+
+  $.get( `http://localhost:1337/product/${ productID }`, ( resp ) => {
 
     const { productId, marketingBullets, description, imageUrls: { md }, brand, pricing: { price: { selling } }  } = resp;
 
-    var selectedProduct = $(' .selected-product ');
-    $(' .selected-product img ').attr('src', md);
-    $(' .selected-product img ').attr('alt', brand);
-    $(' .product-description h3').html(description);
+    $(' .product-description h3').html(description);     //update the product description;
+    $(' .selected-product img ').attr('src', md);        //update the image attribute
+    $(' .selected-product img ').attr('alt', brand);     //update the alt attribute
+    $(' .selected-product').data({"productprice": selling, "productdescription": description});  //update items for alert message
 
-    var descr_points = [];
+    let descr_points = [];
 
-    $.each(marketingBullets, function(i, item) {
+    $.each(marketingBullets, (i, item) => {
           descr_points.push('<li>' + item + '</li>');
    });
 
-   try {
-     if (descr_points.length > 0){
-       $(' .product-description ul').html(descr_points);
-     }
-   } catch (e) {
-     console.log('e', e)
-   } finally {
-     $(' .product-price h1 ').html("&#36;" + parseInt(selling).toLocaleString());
-   }
+    $(' .product-description ul').html(descr_points);     //update marketing bullet points
 
+    $(' .product-price h1 ').html("&#36;" + priceFormatter(selling));   //format price into currency format
   });
 
 })
+
+$( "#cart" ).on('click', (e) => {
+  e.preventDefault();
+  const selectedProduct = $('#sel-product');
+
+  const price = priceFormatter("productprice"));
+  const description = selectedProduct.data("productdescription");
+
+  alert(`Product: ${ description } \n
+    Price: $${ price }
+    `)
+})
+
+
+const priceFormatter(number) => {
+  return parseInt(number).toLocaleString();
+}

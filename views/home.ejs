@@ -12,9 +12,11 @@
    <body>
 
 
-
-
-     <div class="selected-product">
+     <div class="selected-product" id="sel-product"
+       data-productPrice="<%= productList[0].pricing.price.selling %>"
+       data-productDescription="<%= productList[0].description %>"
+       data-productID="<%=productList[0].productId%>"
+      >
        <div class="product-image">
          <img src="<%= productList[0].imageUrls.md %>" alt="<%= productList[0].brand %>">
        </div>
@@ -34,7 +36,7 @@
        <div class="product-price">
 
          <h1>&#36;<%= parseInt(productList[0].pricing.price.selling).toLocaleString() %></h1>
-         <button type="button" name="cart">ADD TO CART</button>
+         <button type="button" name="cart" id="cart">ADD TO CART</button>
        </div>
     </div>
 
