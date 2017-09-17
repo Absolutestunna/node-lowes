@@ -1,8 +1,8 @@
-var http = require('http');
-var https = require('https');
-var express = require('express');
-var fs = require('fs');
-
+const http = require('http');
+const https = require('https');
+const express = require('express');
+const fs = require('fs');
+const ejslint = require('ejs-lint');
 
 var app = express();
 
@@ -58,6 +58,19 @@ https.get(url, function(res){
 
 app.get('/', (req, resp) => {
     resp.render('home', { productList: productList });
+
+})
+
+app.get('/product/:id', (req, resp) => {
+
+  // resp.send(req.params.id)
+
+  const product = productList.filter((product) => {
+   return product.productId == req.params.id;
+ })[0];
+
+ resp.send(product)
+
 })
 
 

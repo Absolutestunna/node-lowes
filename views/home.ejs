@@ -10,14 +10,62 @@
 
    </head>
    <body>
-     <% productList.forEach((product) => { %>
-       <h2><%= (product.pricing.price.selling) ? product.pricing.price.selling : 10.00 %></h2>
-     <% }) %>
+
+
+
+
+     <div class="selected-product">
+       <div class="product-image">
+         <img src="<%= productList[0].imageUrls.md %>" alt="<%= productList[0].brand %>">
+       </div>
+       <div class="product-description">
+
+          <h3><%= productList[0].description %></h3>
+
+          <ul>
+
+              <% productList[0].marketingBullets.forEach((point) => { %>
+                  <li><%=  point  %></li>
+              <% }) %>
+
+          </ul>
+
+       </div>
+       <div class="product-price">
+
+         <h1>&#36;<%= parseInt(productList[0].pricing.price.selling).toLocaleString() %></h1>
+         <button type="button" name="cart">ADD TO CART</button>
+       </div>
+    </div>
+
+
+    <div class="product-items-container">
+
+      <% productList.forEach((product) => { %>
+        <div class='product-item' data-productid="<%= product.productId %>">
+          <img src="<%= product.imageUrls.sm %>" alt="<%= product.brand %>">
+          <div class="product-thumb-description">
+            <p>
+              <%=  product.description %>
+            </p>
+          </div>
+          <div class="product-thumb-price">
+            <p>&#36;<%= parseInt(product.pricing.price.selling).toLocaleString() %></p>
+          </div>
+          <button type="button" name="view-more-button" class="view-more-button">VIEW MORE</button>
+        </div>
+      <% }) %>
+
+    </div>
+
+
 
 
 
 
 
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/index.js"></script>
+
    </body>
 </html>

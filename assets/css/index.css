@@ -1,3 +1,131 @@
-.green {
-  color: green;
+/* Note on code snippet
+  author: Martin Wolf
+  source code: https://codepen.io/martinwolf/pen/qlFdp
+*/
+
+
+
+
+
+/*** SELECTED PRODUCT ****/
+
+.selected-product {
+  margin: 20px auto;
+  border: 2px solid #e2dfdf;
+  width: 90%;
+  padding: 20px;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+
+}
+
+
+.product-image img {
+  margin-left: 1rem;
+}
+
+.product-image, .product-price {
+  flex: 1;
+}
+
+
+.product-description {
+  flex: 3;
+  margin-right: 40px;
+}
+
+.product-description h3 {
+  /*font-family: Helvitica-Bold;*/
+  margin-bottom: 20px;
+}
+
+.product-description ul > li {
+  font-size: 14px;
+  color: #333333;
+  list-style-type: disc;
+  margin-left: 30px;
+}
+
+.product-price h1 {
+  font-size: 22px;
+}
+
+
+.product-price button {
+  width: 100%;
+  height: 44px;
+  color: #fff;
+  font-size: 14px;
+  background-color: #338700;
+  margin-top: 10px;
+  border: 1px solid #338700;
+}
+
+
+/**** PRODUCT ITEMS ******/
+
+.product-items-container {
+
+  width: 97%;
+  margin: 0 auto;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.product-item {
+
+  width: 18%;
+  height: 265px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  border: 2px solid #e2dfdf;
+  padding: 20px;
+}
+
+.product-item img {
+  margin-bottom: 20px;
+}
+
+.product-thumb-description {
+  color: black;
+
+  /*See note on this code snippet*/
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.product-thumb-price {
+  color: #333333;
+  margin-top: 10px;
+}
+
+.product-item button {
+  border: 2px solid #CCCCCC;
+  font-size: 14px;
+  margin-top: 15px;
+  width: 100%;
+  height: 44px;
+  background-color: #FFFFFF;
+
 }
