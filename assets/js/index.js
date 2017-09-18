@@ -36,10 +36,12 @@ $( "#cart" ).on('click', (e) => {
   const price = priceFormatter(selectedProduct.data("productprice"));
   const description = selectedProduct.data("productdescription");
 
+
+  //display product and price
   alert(`
     Product: ${ description } \n
     Price: $${ price }
-    `)
+    `);
 })
 
 

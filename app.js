@@ -4,7 +4,7 @@ const express = require('express');
 const fs = require('fs');
 const ejslint = require('ejs-lint');
 
-var app = express();
+const app = express();
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -45,8 +45,6 @@ https.get(url, function(res){
       const parsedData = JSON.parse(rawData);
       productList = parsedData.productList;
 
-
-
     } catch (e) {
       console.error(e.message);
     }
@@ -63,8 +61,7 @@ app.get('/', (req, resp) => {
 
 app.get('/product/:id', (req, resp) => {
 
-  // resp.send(req.params.id)
-
+  // filter the product list for specific product and return the product if found.
   const product = productList.filter((product) => {
    return product.productId == req.params.id;
  })[0];
@@ -75,5 +72,5 @@ app.get('/product/:id', (req, resp) => {
 
 
 app.listen(1337, () => {
-  console.log('app listening on port 1337')
+  console.log('app listening on port 1337');
 })
